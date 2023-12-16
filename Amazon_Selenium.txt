@@ -1,0 +1,41 @@
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Amazon {
+    public static void main(String[] args) {
+        WebDriver driver = new ChromeDriver();
+        // Navigate to Amazon
+        driver.get("https://www.amazon.in/");
+        driver.manage().window().maximize();
+        //search for iphone
+        WebElement search_box =driver.findElement(By.id("twotabsearchtextbox"));
+       search_box.sendKeys("iPhone");
+       search_box.sendKeys(Keys.RETURN);
+       driver.get("https://aax-eu.amazon.in/x/c/RMLGNmD-3_aA_Bm0UpTu-NkAAAGMPd3HlwMAAAH2AQBvbm9fdHhuX2JpZDEgICBvbm9fdHhuX2ltcDEgICBRGocW/https://www.amazon.in/gp/aw/d/B0BDHX8Z63/?_encoding=UTF8&pd_rd_plhdr=t&aaxitk=ef5999a9624cbf0717060ca6f1b989f2&hsa_cr_id=1681504330102&qid=1701844993&sr=1-1-e0fa1fdd-d857-4087-adda-5bd576b25987&ref_=sbx_be_s_sparkle_atgssd2_asin_0_img&pd_rd_w=FB7Yj&content-id=amzn1.sym.df9fe057-524b-4172-ac34-9a1b3c4e647d%3Aamzn1.sym.df9fe057-524b-4172-ac34-9a1b3c4e647d&pf_rd_p=df9fe057-524b-4172-ac34-9a1b3c4e647d&pf_rd_r=REZVPDS5C4XJMYE2N14K&pd_rd_wg=1FYkW&pd_rd_r=4f396f4d-d558-4e52-a375-1a7a850852a4");
+       WebElement add_to_cart_button= driver.findElement(By.id("add-to-cart-button"));
+       add_to_cart_button.click();
+
+       //Navigate to the registration page
+        driver.get("https://www.amazon.in/ap/register");
+        WebElement username = driver.findElement(By.id("ap_customer_name"));
+        username.sendKeys("Abchdhak");
+        WebElement email = driver.findElement(By.id("ap_email"));
+        email.sendKeys("abchdk@gmail.com");
+        WebElement passowrd=driver.findElement(By.id("ap_password"));
+        passowrd.sendKeys("ahshs@#11");
+
+        //Submit the form
+        WebElement createAccountButton = driver.findElement(By.id("continue"));
+        createAccountButton.click();
+
+        //Search page
+        driver.get("https://www.amazon.in/s?k=phones");
+        //Apply filters
+        WebElement filter=driver.findElement(By.xpath("//span[text()='Brand']/following-sibiling::ul//li//span"));
+        filter.click();
+        //validate filtered list
+        WebElement firstfiltProduct = driver.findElement(By.xpath("//div[@data-asign][1]//h2/a"));
+        driver.quit();
+
